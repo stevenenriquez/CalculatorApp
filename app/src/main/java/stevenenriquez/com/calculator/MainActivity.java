@@ -1,10 +1,11 @@
 package stevenenriquez.com.calculator;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
             buttonMult, buttonDiv, buttonMod, buttonDec, buttonMS, buttonBack,
             buttonMC, buttonMR, buttonEqual, buttonClear, buttonSettings;
 
-    EditText textViewEdit;
+    TextView textViewEdit;
 
     boolean addFlag, subFlag, multFlag, divFlag, modFlag, signFlag = false,
             decFlag = false;
@@ -50,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
         buttonClear = findViewById(R.id.buttonClear);
         buttonSettings = findViewById(R.id.buttonSettings);
         textViewEdit = findViewById(R.id.textView);
+
+        buttonSettings.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                openSettingsActivity();
+            }
+        });
 
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -305,35 +315,35 @@ public class MainActivity extends AppCompatActivity {
                 val2 = Float.parseFloat(textViewEdit.getText() + "");
                 String tempString;
 
-                if (addFlag)
+                if(addFlag)
                 {
                     tempString = val1 + val2 + "";
                     textViewEdit.setText(tempString);
                     addFlag = false;
                 }
 
-                if (subFlag)
+                if(subFlag)
                 {
                     tempString = val1 - val2 +"";
                     textViewEdit.setText(tempString);
                     subFlag = false;
                 }
 
-                if (multFlag)
+                if(multFlag)
                 {
                     tempString = val1 * val2 + "";
                     textViewEdit.setText(tempString);
                     multFlag = false;
                 }
 
-                if (divFlag)
+                if(divFlag)
                 {
                     tempString = val1 / val2 + "";
                     textViewEdit.setText(tempString);
                     divFlag = false;
                 }
 
-                if (modFlag)
+                if(modFlag)
                 {
                     tempString = val1 % val2 + "";
                     textViewEdit.setText(tempString);
@@ -343,16 +353,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//        private boolean isTooLong(EditText inText)
-//        {
-//            if (inText.getText().toString().length() == 16)
-//            {
-//                return true;
-//            }
-//            return false;
-//        }
+        public void openSettingsActivity()
+        {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+        }
 
-        private void isEmpty(EditText inText)
+        private boolean isTooLong(TextView inText)
+        {
+            if (inText.getText().toString().length() >= 16)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void isEmpty(TextView inText)
         {
             String tempString = inText.getText().toString();
             int length = tempString.length();
@@ -362,12 +378,4 @@ public class MainActivity extends AppCompatActivity {
                 inText.setText("0");
             }
         }
-
-//        private void nullCheck(EditText inText)
-//        {
-//            if (inText.getText() == null)
-//            {
-//                inText.setText("0");
-//            }
-//        }
     }

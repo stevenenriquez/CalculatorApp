@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#1e2b76</color>
-    <!--default colorPrimaryDark: #3a3a3a-->
     <color name="colorPrimaryDark">#3d51ff</color>
     <color name="colorAccent">#cb3065</color>
-
     <color name="buttonColorLight">#3d51ff</color>
     <color name="numButtonColorLight">#596aff</color>
     <color name="buttonColorDark">#313131</color>
     <color name="numbuttonColorDark">#232854</color>
-    <color name="backgroundColorLight">#c9c9c9</color>
-    <color name="backgroundColorDark">#515151</color>
-
-    //from internet
-    <color name="darkColorPrimary">#1e2756</color>
-    <color name="darkColorPrimaryDark">#141831</color>
-    <color name="darkColorAccent">#2aac4b</color>
+    <color name="backgroundColorLight">#e8e8e8</color>
+    <color name="backgroundColorDark">#686868</color>
 </resources>

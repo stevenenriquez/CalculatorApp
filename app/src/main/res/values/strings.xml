@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Calculator</string>
+    <string name="app_name">Enriquez_Sepulveda_CalculatorApp</string>
     <string name="button_clear">C</string>
     <string name="button_sign">+/-</string>
     <string name="button_perc">%</string>

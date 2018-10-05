@@ -1,3 +1,8 @@
+/*
+ File: MainActivity.java
+ Authors: Steven E & Andres S
+ */
+
 package stevenenriquez.com.calculator;
 
 import android.content.Intent;
@@ -15,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
             buttonMC, buttonMR, buttonEqual, buttonClear, buttonSettings;
 
     TextView textViewEdit;
+
+    View view;
 
     boolean addFlag, subFlag, multFlag, divFlag, modFlag, signFlag = false,
             decFlag = false;
@@ -52,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
         buttonSettings = findViewById(R.id.buttonSettings);
         textViewEdit = findViewById(R.id.textView);
 
+        // setting background color
+        view = this.getWindow().getDecorView();
+        view.setBackgroundResource(R.color.backgroundColorLight);
+
+        // calls func. once the settings button is clicked to open the activity
         buttonSettings.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -228,6 +240,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
+                    // takes away the sign that was previously placed
                     tempString = tvString.substring(1, tvString.length());
                     textViewEdit.setText(tempString);
                     signFlag = false;
@@ -353,21 +366,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+        // creates intent to switch to the Settings Activity
         public void openSettingsActivity()
         {
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
         }
 
-        private boolean isTooLong(TextView inText)
-        {
-            if (inText.getText().toString().length() >= 16)
-            {
-                return true;
-            }
-            return false;
-        }
-
+        // checks if text view is empty before certain actions, sets it to 0 if so
         private void isEmpty(TextView inText)
         {
             String tempString = inText.getText().toString();

@@ -1,3 +1,8 @@
+/*
+ File: SettingsActivity.java
+ Authors: Steven E & Andres S
+ */
+
 package stevenenriquez.com.calculator;
 
 import android.support.v7.app.AppCompatActivity;
@@ -7,25 +12,38 @@ import android.widget.Switch;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    Switch lSwitch;
+    View view;
+    Boolean colorFlag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-//        setTheme(R.style.thestylename);
-//        Switch lightSwitch = findViewById(R.id.lightSwitch);
-//        lightSwitch.setChecked(useDarkTheme);
+        lSwitch = findViewById(R.id.lightSwitch);
+        view = this.getWindow().getDecorView();
+        view.setBackgroundResource(R.color.backgroundColorLight);
+        colorFlag = false;
 
-//    private void lightModeSwitch()
-//    {
-//        //MainActivity.setTheme(R.style.AppThemeLight);
-//        this.setTheme(R.style.AppThemeLight);
-//    }
-//
-//    private void darkModeSwitch()
-//    {
-//        //MainActivity.setTheme(R.style.AppThemeDark);
-//        setTheme(R.style.AppThemeDark);
-//    }
+        // switching the night mode off/on
+        lSwitch.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if(!colorFlag)
+                {
+                    view.setBackgroundResource(R.color.backgroundColorDark);
+                    colorFlag = true;
+                }
+                else
+                {
+                    view.setBackgroundResource(R.color.backgroundColorLight);
+                    colorFlag = false;
+                }
+            }
+        });
+
     }
 }
